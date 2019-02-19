@@ -24,7 +24,8 @@
 		<ul class="nav navbar-nav">
             <li @if(pagename == "Home") {class="active"}><a href="@routes.HomeController.index()">Home</a></li>
 		    <li @if(pagename == "On Sale") {class="active"}><a href="@routes.HomeController.onsale()">On Sale</a></li>
-		    <li @if(pagename == "About") {class="active"}><a href="@routes.HomeController.about()">About us</a></li>
+			<li @if(pagename == "About") {class="active"}><a href="@routes.HomeController.about()">About us</a></li>
+			<li @if(pagename == "Log In"){class="active"}><a href="@routes.LoginController.login()">Log Out</a></li>
 		</ul>
 	    </div>
 	</nav>
