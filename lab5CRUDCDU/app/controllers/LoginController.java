@@ -35,5 +35,11 @@ public class LoginController extends Controller {
             return redirect(controllers.routes.HomeController.index());
         }
     }
+
+    public Result logout(){
+        session().clear();
+        flash("success", "You have been logged out");
+        return redirect(routes.LoginController.login());
+    }
 }
 

@@ -1,7 +1,6 @@
 package controllers;
 
 import play.mvc.*;
-
 import views.html.*;
 
 import play.api.Environment;
@@ -13,7 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import models.*;
-
+import models.users.*;
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -52,11 +51,13 @@ public class HomeController extends Controller {
     public Result about() {
         return ok(about.render());
     }
-
+    @Security.Authenticated(Secured.class)
     public Result addItem() {
         Form<ItemOnSale> itemForm = formFactory.form(ItemOnSale.class);
         return ok(addItem.render(itemForm));
 }
+
+@Security.Authenticated(Secured.class)
 public Result addItemSubmit() {
     // We use the method bindFromRequest() to populate our Form<ItemOnSale> object with the
     // data that the user submitted. Thanks to Play Framework, we do not need to do the messy
@@ -94,7 +95,8 @@ public Result addItemSubmit() {
         return redirect(controllers.routes.HomeController.onsale(0));
     }
 }
-
+@Security.Authenticated(Secured.class)
+@Transactional
 public Result deleteItem(Long id) {
 
     // The following line of code finds the item object by id, then calls the delete() method
@@ -106,7 +108,7 @@ public Result deleteItem(Long id) {
     // And redirect to the onsale page
     return redirect(controllers.routes.HomeController.onsale(0));
 }
-
+@Security.Authenticated(Secured.class)
 public Result updateItem(Long id) {
     ItemOnSale i;
     Form<ItemOnSale> itemForm;
