@@ -1,6 +1,6 @@
-@(users: List[models.users.User],user: models.users.User)
-@main("Users",user){
-    <h1>Current Users</h1>
+@(users: List[models.users.Administrator],user: models.users.User)
+@main("Administrator",user){
+    <h1>Current Administrators</h1>
 
 
     @* Display successful new user message from flash, if it is set *@
@@ -34,13 +34,13 @@
                   <td>@u.getPassword</td>
                   <!-- Update button -->
 						<td>
-							<a href="@routes.HomeController.updateUser(u.getEmail)" class="button-xs btn-danger">
+							<a href="@routes.HomeController.updateAdmin(u.getEmail)" class="button-xs btn-danger">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</a>
                         </td>
                   <!-- Delete button -->
 						<td>
-							<a href="@routes.HomeController.deleteUser(u.getEmail)" class="button-xs btn-danger" onclick="return confirmDel();">
+							<a href="@routes.HomeController.deleteAdmin(u.getEmail)" class="button-xs btn-danger" onclick="return confirmDel();">
 								<span class="glyphicon glyphicon-trash"></span>
 							</a>
                         </td>
@@ -51,8 +51,8 @@
     </table>
 
     <p>
-        <a href="@routes.HomeController.addUser()">
-            <button class="btn btn-primary">Add a new User</button>
+        <a href="@routes.HomeController.addAdmin()">
+            <button class="btn btn-primary">Add a new Administrator</button>
         </a>
     </p>
 </div>
